@@ -3,8 +3,8 @@ import { createRecord, getAllRecords } from "../controllers/recordController";
 
 
 export const recordRoute = new Elysia({ prefix: '/records' })
-    .get('/', async ({ query }) => {
-        return getAllRecords(query.user_id as string);
+    .get('/', async ({ query, set }) => {
+        return getAllRecords(query.user_id as string, set);
     })
     .post('/', async ({ body }) => {
         return createRecord(body);
